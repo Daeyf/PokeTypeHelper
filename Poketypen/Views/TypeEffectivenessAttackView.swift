@@ -20,6 +20,7 @@ struct TypeEffectivenessAttackView: View {
                     NavigationLink {
                         TypeEffectAttackDetail(pokeType: poketype)
                     } label: {
+                        //Test
                         HStack {
                             PokemonTypeView(pokemonType: poketype)
                             VStack {
