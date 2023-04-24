@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class RankViewModel: PokemonViewModel, ObservableObject {
+class RankViewModel: PokemonGeneralModel, ObservableObject {
     
     override init() {
         super.init()

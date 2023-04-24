@@ -20,9 +20,16 @@ struct PokemonRankItemView: View {
                 }
                 .frame(width: metrics.size.width * 0.8)
                 
-                Text("\(mixedPokemonType.rank)")
-                    .frame(width: metrics.size.width * 0.2)
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                if let rank = mixedPokemonType.rank {
+                    Text("\(rank)")
+                        .frame(width: metrics.size.width * 0.2)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                } else {
+                    Image(systemName: "rays")
+                        .frame(width: metrics.size.width * 0.2)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                }
+                
             }
         }
         .frame(maxWidth: .infinity)
@@ -31,9 +38,8 @@ struct PokemonRankItemView: View {
 
 struct PokemonRankItemView_Previews: PreviewProvider {
     static var previews: some View {
-        let rank = MixedPoketype.calculateRank(for: Poketype.normal, and: Poketype.feuer)
-        let mockPokemonType = MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer, rank: rank)
-        let mockPokemonType2 = MixedPoketype(type1: Poketype.normal, rank: rank)
+        let mockPokemonType = MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer)
+        let mockPokemonType2 = MixedPoketype(type1: Poketype.normal)
         VStack {
             PokemonRankItemView(mixedPokemonType: mockPokemonType)
             PokemonRankItemView(mixedPokemonType: mockPokemonType2)

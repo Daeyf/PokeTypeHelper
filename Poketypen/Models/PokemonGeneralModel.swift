@@ -1,5 +1,5 @@
 //
-//  PokemonViewModel.swift
+//  PokemonGeneralModel.swift
 //  Poketypen
 //
 //  Created by David Thierbach on 04.01.23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class PokemonViewModel: PokeTypeProtocol{
+class PokemonGeneralModel: PokeTypeProtocol{
     
     @Published var mixedPokemon: [MixedPoketype] = []
     @Published var mixedPokemonCount: Int = 0

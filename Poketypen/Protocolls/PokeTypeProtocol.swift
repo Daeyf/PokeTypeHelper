@@ -11,8 +11,11 @@ protocol PokeTypeProtocol {
     func createPokemonList() -> [MixedPoketype]
 }
 
-extension PokeTypeProtocol where Self: PokemonViewModel {
+//Pre-building a struct of this protocol
+extension PokeTypeProtocol where Self: PokemonGeneralModel {
     
+    /// Creating lists of Pokemon and merge them
+    /// - Returns: Returns a list of MixedPokemon (type1, type2 and rank)
     func createPokemonList() -> [MixedPoketype] {
         var mixedTypeList: [MixedPoketype] = []
         var restList = Poketype.listAllTypes
@@ -28,6 +31,9 @@ extension PokeTypeProtocol where Self: PokemonViewModel {
         return mixedTypeList
     }
     
+    /// Adding a List of pokemon with one specific type as type1
+    /// - Parameter type: specific Poketype
+    /// - Returns: List of MixedPokemon(type1, type2, rank)
     func createPokemonList(for type: Poketype) -> [MixedPoketype] {
         var restList = Poketype.listAllTypes
         var mixedTypeList: [MixedPoketype] = []
@@ -47,8 +53,7 @@ extension PokeTypeProtocol where Self: PokemonViewModel {
     ///   - type2: Second Pokemontype (optional). If nil this is pure first type
     /// - Returns: Element of MixedPoketype
     func generateMixedPoketype(by type1: Poketype, and type2: Poketype? = nil) -> MixedPoketype {
-        let rank = MixedPoketype.calculateRank(for: type1, and: type2)
-        return MixedPoketype(type1: type1, type2: type2, rank: rank)
+        return MixedPoketype(type1: type1, type2: type2)
     }
     
     /// Filters shown Pokemontype lists.

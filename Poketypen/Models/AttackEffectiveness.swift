@@ -33,7 +33,7 @@ enum AttackEffectiveness: Codable {
     /// - Returns: List of Pokemon with two types which fulfills the request.
     func loadMixedList(for type: Poketype) -> [MixedPoketype] {
         
-        let mixedPokemonList = PokemonViewModel().createPokemonList()
+        let mixedPokemonList = PokemonGeneralModel().createPokemonList()
         let filteredPokeList = mixedPokemonList.filter { mixedPokemon in
             switch self {
             case .superStrongType:

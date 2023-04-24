@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class TypeEffectivenessModel: PokemonViewModel, TypeEffectivenessBase {
+class TypeEffectivenessModel: PokemonGeneralModel, TypeEffectivenessBase {
     
     @Published var type1Index = 0
     @Published var type2Index = 0
@@ -64,7 +64,7 @@ class TypeEffectivenessModel: PokemonViewModel, TypeEffectivenessBase {
          */
         let filteredMixedType = self.filterPokemonList(for: type1.realType, and: type2.realType)
         let inputList = filteredMixedType.compactMap { InputType.multi($0)}
-        FetchingService.fetch(with: inputList) { result in
+        ProvidingService.fetch(with: inputList) { result in
             switch result {
             case .success(let mixedList):
                 print("Send Multi Results: \(inputList)")
@@ -77,7 +77,7 @@ class TypeEffectivenessModel: PokemonViewModel, TypeEffectivenessBase {
     
     func startFetchSingle(with type: Poketype) {
         let inputType = InputType.single(type)
-        FetchingService.fetch(with: [inputType]) { result in
+        ProvidingService.fetch(with: [inputType]) { result in
             switch result {
             case .success(let inputList):
                 print("Send Single Results: \(inputList)")
