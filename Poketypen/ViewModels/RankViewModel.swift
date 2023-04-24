@@ -10,6 +10,8 @@ import Combine
 
 class RankViewModel: PokemonGeneralModel, ObservableObject {
     
+    @Published var rankItemList: [RankItemViewModel] = []
+    
     override init() {
         super.init()
     }
