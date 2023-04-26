@@ -22,7 +22,7 @@ struct RankView: View {
                 HStack {
                     PokemonRankItemView(rankItemViewModel: rankModelItem)
                 }
-            }.
+            }
         }
     }
 }
