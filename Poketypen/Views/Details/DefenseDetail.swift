@@ -76,7 +76,7 @@ struct DefenseDetail: View {
 
 struct DefenseDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let mixedPokemon = MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer, rank: 2)
+        let mixedPokemon = MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer)
         DefenseDetail(mixedPokemon: mixedPokemon, effectivenessType: .weakType)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TypeEffectivenessDefenseView: View {
     
-    @ObservedObject var typeEffectivenessDefenseViewModel = TypeEffectivenessModel()
+    @ObservedObject var typeEffectivenessDefenseViewModel = TypeEffectivenessController()
     @State private var mixedPokemonSelection: MixedPoketype?
     
     var body: some View {

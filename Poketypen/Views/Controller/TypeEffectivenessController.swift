@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class TypeEffectivenessModel: PokemonGeneralModel, TypeEffectivenessBase {
+class TypeEffectivenessController: PokemonGeneralModel, TypeEffectivenessBase {
     
     @Published var type1Index = 0
     @Published var type2Index = 0
@@ -35,6 +35,8 @@ class TypeEffectivenessModel: PokemonGeneralModel, TypeEffectivenessBase {
                     newMixedPokemonList.append(mixedType)
                 case .single(let pokeType):
                     newPokeList.append(pokeType)
+                case .rankContent(_, _):
+                    print("This inputtype is not needed in this category!")
                 }
             }
             print("Value received")

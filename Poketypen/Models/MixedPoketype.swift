@@ -38,7 +38,7 @@ struct MixedPoketype: Identifiable, Hashable, Codable {
         return DefenseEffectiveness.noDamageType.loadList(for: self.type1, and: self.type2)
     }
     
-    init(id: UUID = UUID(), type1: Poketype, type2: Poketype? = nil, rank: Int? = nil) {
+    init(id: UUID = UUID(), type1: Poketype, type2: Poketype? = nil) {
         self.id = id
         self.type1 = type1
         self.type2 = type2

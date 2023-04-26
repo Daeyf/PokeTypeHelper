@@ -8,42 +8,23 @@
 import SwiftUI
 
 struct RankView: View {
-    @ObservedObject var rankViewModel = RankViewModel()
+    
+    @State var rankItemList = RankViewController().rankItemList
+    @State private var rankItemSelection: RankItemViewModel?
     
     var body: some View {
         VStack {
             Text("Rang der Typen")
                 .font(.title)
                 .multilineTextAlignment(.center)
-            List {
-                Section(header:
-                            HStack(alignment: .center) {
-                        Text("Typ 1")
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        
-                        Text("Typ 2")
-                            .multilineTextAlignment(.center)
-                            .frame(maxWidth: .infinity, alignment: .center)
-                        
-                        Text("Rank")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    .frame(maxWidth: .infinity)
-                    Spacer()
-                }) {
-                    ForEach(0..<rankViewModel.mixedPokemonCount, id: \.self) {mixedPokemonIndex in
-                        
-                        PokemonRankItemView(mixedPokemonType:
-                                                rankViewModel
-                            .mixedPokemon
-                            .sorted()
-                            .reversed()[mixedPokemonIndex])
-                    }
+            
+            List(rankItemList, id: \.uuid, selection: $rankItemSelection) { rankModelItem in
+                HStack {
+                    PokemonRankItemView(rankItemViewModel: rankModelItem)
                 }
-            }
+            }.
         }
     }
-    
 }
 
 
