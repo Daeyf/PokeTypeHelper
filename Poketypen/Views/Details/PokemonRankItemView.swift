@@ -9,22 +9,24 @@ import SwiftUI
 
 struct PokemonRankItemView: View {
     
-    @ObservedObject var rankViewController: RankItemController
-    
-    init(rankItemViewModel: RankItemViewModel) {
-        rankViewController = RankItemController(rankItem: rankItemViewModel)
-    }
+    @EnvironmentObject var rankViewController: RankViewController
+//    @ObservedObject var rankItemViewController: RankItemController
+//
+//    init(rankItemViewModel: RankItemViewModel) {
+//        rankItemViewController = RankItemController(rankItem: rankItemViewModel)
+//        rankItemViewController.addRankFunction = self.addRank
+//    }
     
     var body: some View {
         
         HStack(alignment: .center) {
             GeometryReader { metrics in
                 HStack(alignment: .center) {
-                    GeneralPokemonItemView(mixedPokemonType: rankViewController.rankItem.mixedPokemon, stackingAlignment: .horizontal)
+                    GeneralPokemonItemView(mixedPokemonType: rankItemViewController.rankItem.mixedPokemon, stackingAlignment: .horizontal)
                 }
                 .frame(width: metrics.size.width * 0.8)
                 
-                if let rank = rankViewController.rankItem.rank {
+                if let rank = rankItemViewController.rankItem.rank {
                     Text("\(rank)")
                         .frame(width: metrics.size.width * 0.2)
                         .frame(maxWidth: .infinity, alignment: .trailing)
@@ -38,6 +40,16 @@ struct PokemonRankItemView: View {
         }
         .frame(maxWidth: .infinity)
     }
+    
+    func addRank(uuid: UUID, rank: Int) {
+        guard let index = self.rankViewController.rankItemList.firstIndex(where: { $0.uuid == uuid }) else {
+
+            print("Cannot find element with uuid: \(uuid)")
+            return
+        }
+
+        rankViewController.rankItemList[index].rank = rank
+    }
 }
 
 struct PokemonRankItemView_Previews: PreviewProvider {
@@ -48,7 +60,9 @@ struct PokemonRankItemView_Previews: PreviewProvider {
         let mockRankItemViewModel2 = RankItemViewModel(uuid: UUID(), mixedPokemon: mockPokemonType2)
         VStack {
             PokemonRankItemView(rankItemViewModel: mockRankItemViewModel)
+                .environmentObject(RankViewController())
             PokemonRankItemView(rankItemViewModel: mockRankItemViewModel2)
+                .environmentObject(RankViewController())
         }
     }
 }

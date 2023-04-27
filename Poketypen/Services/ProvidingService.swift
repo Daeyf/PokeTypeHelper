@@ -24,7 +24,7 @@ struct ProvidingService {
     static func calculateRank(for uuid: UUID,
                               and type1: Poketype,
                               and type2: Poketype?,
-completion: @escaping (ProvidingResult) -> Void) {
+                              completion: @escaping (ProvidingResult) -> Void) {
         DispatchQueue.main.async {
             var rankNumber: Int = 0
             

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RankView: View {
     
-    @State var rankItemList = RankViewController().rankItemList
+    @StateObject var rankViewController = RankViewController()
     @State private var rankItemSelection: RankItemViewModel?
     
     var body: some View {
@@ -18,15 +18,19 @@ struct RankView: View {
                 .font(.title)
                 .multilineTextAlignment(.center)
             
-            List(rankItemList, id: \.uuid, selection: $rankItemSelection) { rankModelItem in
+            List{
+                ForEach
+            }
+            
+            List(rankViewController.rankItemList, id: \.uuid, selection: $rankItemSelection) { rankModelItem in
                 HStack {
                     PokemonRankItemView(rankItemViewModel: rankModelItem)
+                        .environmentObject(rankViewController)
                 }
             }
         }
     }
 }
-
 
 struct RankView_Previews: PreviewProvider {
     static var previews: some View {

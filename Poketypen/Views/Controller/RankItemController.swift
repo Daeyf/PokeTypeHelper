@@ -32,6 +32,7 @@ class RankItemController: ObservableObject {
                 if rankItem.uuid == uuidToFind {
                     print("input incoming: \(rank) for uuid: \(uuidToFind)")
                     self.rankItem.rank = rank
+                    
                 }
             default: print("the other options belong to another inputtype")
             }
@@ -39,7 +40,7 @@ class RankItemController: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    func calculateRank(for uuid: UUID, pokeType1: Poketype, poketype2: Poketype) {
+    private func calculateRank(for uuid: UUID, pokeType1: Poketype, poketype2: Poketype) {
         ProvidingService.calculateRank(for: uuid, and: pokeType1, and: poketype2) { result in
             switch result {
             case .success(let uuid, let rank):
