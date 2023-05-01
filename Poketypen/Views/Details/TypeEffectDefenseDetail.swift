@@ -51,6 +51,6 @@ struct TypeEffectDefenseDetail: View {
 
 struct TypeEffectDefenseDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TypeEffectDefenseDetail(mixedPokemon: MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer, rank: 2))
+        TypeEffectDefenseDetail(mixedPokemon: MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer))
     }
 }

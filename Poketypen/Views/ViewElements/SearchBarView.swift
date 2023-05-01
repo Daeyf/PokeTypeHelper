@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchbarView: View {
-    @ObservedObject var typeEffectivenessViewModel: TypeEffectivenessModel
+    @ObservedObject var typeEffectivenessViewModel: TypeEffectivenessController
     var twoPossibleTypes: Bool
     
     var body: some View {
@@ -43,7 +43,7 @@ struct SearchbarView: View {
 
 struct Previews_SearchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchbarView(typeEffectivenessViewModel: TypeEffectivenessModel(), twoPossibleTypes: true)
-        SearchbarView(typeEffectivenessViewModel: TypeEffectivenessModel(), twoPossibleTypes: false)
+        SearchbarView(typeEffectivenessViewModel: TypeEffectivenessController(), twoPossibleTypes: true)
+        SearchbarView(typeEffectivenessViewModel: TypeEffectivenessController(), twoPossibleTypes: false)
     }
 }

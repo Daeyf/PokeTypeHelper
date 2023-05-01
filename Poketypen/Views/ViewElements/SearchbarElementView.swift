@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchbarElementView: View {
     
-    @ObservedObject var typeEffectivenessViewController: TypeEffectivenessModel
+    @ObservedObject var typeEffectivenessViewController: TypeEffectivenessController
     var selection: Binding<Int>
     var selectedIndex: Int
     let poketypeOrder: PoketypeOrder
@@ -42,7 +42,7 @@ struct SearchbarElementView: View {
 
 struct Previews_SearchBarElementView_Previews: PreviewProvider {
     static var previews: some View {
-        let typeEffectivenessViewController = TypeEffectivenessModel()
+        let typeEffectivenessViewController = TypeEffectivenessController()
         VStack {
             SearchbarElementView(typeEffectivenessViewController: typeEffectivenessViewController, selection: .constant(0), selectedIndex: 0, poketypeOrder: .first)
             SearchbarElementView(typeEffectivenessViewController: typeEffectivenessViewController, selection: .constant(3), selectedIndex: 3, poketypeOrder: .first)

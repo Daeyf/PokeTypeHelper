@@ -10,4 +10,5 @@ import Foundation
 enum InputType {
     case single(Poketype)
     case multi(MixedPoketype)
+    case rankContent(UUID, Int)
 }

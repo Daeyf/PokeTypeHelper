@@ -17,7 +17,7 @@ struct TypeEffectBenefitDetail: View {
         let superStrongList =  PokemonAttackedViewModel(poketype: poketype, text: "Sehr stark gegen: ", effectivenessType: .superStrongType)
         let strongList =  PokemonAttackedViewModel(poketype: poketype, text: "Stark gegen: ", effectivenessType: .strongType)
         let weakList =  PokemonAttackedViewModel(poketype: poketype, text: "Schwach gegen: ", effectivenessType: .weakType)
-        let superWeakList =  PokemonAttackedViewModel(poketype: poketype, text: "Sehr schach gegen: ", effectivenessType: .superWeakType)
+        let superWeakList =  PokemonAttackedViewModel(poketype: poketype, text: "Sehr schwach gegen: ", effectivenessType: .superWeakType)
         let noDamageList =  PokemonAttackedViewModel(poketype: poketype, text: "Fügt keinen Schaden zu: ", effectivenessType: .noDamageType)
         pokemonAttackedList = [superStrongList,
                                strongList,
@@ -26,6 +26,7 @@ struct TypeEffectBenefitDetail: View {
                                noDamageList]
         print("weaklist generated!")
     }
+    
     var body: some View {
         VStack(alignment: .center) {
             Text("Pokemon mit dem Typ")

@@ -12,7 +12,6 @@ struct MixedPoketype: Identifiable, Hashable, Codable {
     var id = UUID()
     var type1: Poketype
     var type2: Poketype?
-    var rank: Int
     
     /// Gibt die Liste zurück, die mindestens den doppelten Schaden gegen den eigenen Typ anrichten
     var weakAgainst: [Poketype] {
@@ -39,44 +38,17 @@ struct MixedPoketype: Identifiable, Hashable, Codable {
         return DefenseEffectiveness.noDamageType.loadList(for: self.type1, and: self.type2)
     }
     
-    init(id: UUID = UUID(), type1: Poketype, type2: Poketype? = nil, rank: Int) {
+    init(id: UUID = UUID(), type1: Poketype, type2: Poketype? = nil) {
         self.id = id
         self.type1 = type1
         self.type2 = type2
-        self.rank = rank
     }
     
     init() {
         self.id = UUID()
         self.type1 = Poketype.none
         self.type2 = nil
-        self.rank = MixedPoketype.calculateRank(for: .none, and: nil)
-    }
-    
-    /// Counts all types where this type sustains and reduces the count where this type takes at least double damage
-    /// - Returns: The calculated resisting vs susceptible types exist for this type of Pokemon
-    static func calculateRank(for type1: Poketype, and type2: Poketype?) -> Int {
-        var rankNumber: Int = 0
-        
-        rankNumber -= DefenseEffectiveness.weakType.loadList(for: type1, and: type2).count
-        rankNumber -= DefenseEffectiveness.superWeakType.loadList(for: type1, and: type2).count
-        
-        rankNumber += DefenseEffectiveness.strongType.loadList(for: type1, and: type2).count
-        rankNumber += DefenseEffectiveness.superStrongType.loadList(for: type1, and: type2).count
-        rankNumber += DefenseEffectiveness.noDamageType.loadList(for: type1, and: type2).count * 2
-        
-        return rankNumber
     }
 }
 
-extension MixedPoketype: Comparable {
-    static func < (lhs: MixedPoketype, rhs: MixedPoketype) -> Bool {
-        return lhs.rank < rhs.rank
-    }
-    
-    static func == (lhs: MixedPoketype, rhs: MixedPoketype) -> Bool {
-        return lhs.rank == rhs.rank
-    }
-    
-}
 

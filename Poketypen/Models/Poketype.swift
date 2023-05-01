@@ -4,6 +4,7 @@
 //
 //  Created by David Thierbach on 04.11.22.
 //
+// Model is simulated by an enum
 
 import SwiftUI
 import UIKit

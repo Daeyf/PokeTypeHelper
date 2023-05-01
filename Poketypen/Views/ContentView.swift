@@ -22,7 +22,8 @@ struct ContentView: View {
             }.tag(2)
             RankView().tabItem {
                 CustomTabItem(imageName: "Rank.SFSymbol", text: "Ranking")
-            }.tag(3)
+            }
+            .tag(3)
         }
     }
 }

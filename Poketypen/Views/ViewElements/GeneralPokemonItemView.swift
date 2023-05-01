@@ -49,11 +49,11 @@ struct GeneralPokemonItemView: View {
 
 struct GeneralPokemonItemView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockPokemonType = MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer, rank: 0)
-        let mockPokemonType2 = MixedPoketype(type1: Poketype.normal, rank: 9)
+        let mockPokemonType = MixedPoketype(type1: Poketype.normal, type2: Poketype.feuer)
+        let mockPokemonType2 = MixedPoketype(type1: Poketype.normal)
         VStack {
-            PokemonRankItemView(mixedPokemonType: mockPokemonType)
-            PokemonRankItemView(mixedPokemonType: mockPokemonType2)
+            GeneralPokemonItemView(mixedPokemonType: mockPokemonType, stackingAlignment: .horizontal)
+            GeneralPokemonItemView(mixedPokemonType: mockPokemonType2, stackingAlignment: .vertical)
         }
     }
 }
