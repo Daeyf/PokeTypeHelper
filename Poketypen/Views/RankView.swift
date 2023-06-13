@@ -18,10 +18,6 @@ struct RankView: View {
                 .font(.title)
                 .multilineTextAlignment(.center)
             
-            List{
-                ForEach
-            }
-            
             List(rankViewController.rankItemList, id: \.uuid, selection: $rankItemSelection) { rankModelItem in
                 HStack {
                     PokemonRankItemView(rankItemViewModel: rankModelItem)

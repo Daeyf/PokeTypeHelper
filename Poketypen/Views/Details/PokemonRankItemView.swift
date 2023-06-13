@@ -9,13 +9,11 @@ import SwiftUI
 
 struct PokemonRankItemView: View {
     
-    @EnvironmentObject var rankViewController: RankViewController
-//    @ObservedObject var rankItemViewController: RankItemController
-//
-//    init(rankItemViewModel: RankItemViewModel) {
-//        rankItemViewController = RankItemController(rankItem: rankItemViewModel)
-//        rankItemViewController.addRankFunction = self.addRank
-//    }
+    @ObservedObject var rankItemViewController: RankItemController
+    
+    init(rankItemViewModel: RankItemViewModel) {
+        rankItemViewController = RankItemController(rankItem: rankItemViewModel)
+    }
     
     var body: some View {
         
@@ -39,16 +37,6 @@ struct PokemonRankItemView: View {
             }
         }
         .frame(maxWidth: .infinity)
-    }
-    
-    func addRank(uuid: UUID, rank: Int) {
-        guard let index = self.rankViewController.rankItemList.firstIndex(where: { $0.uuid == uuid }) else {
-
-            print("Cannot find element with uuid: \(uuid)")
-            return
-        }
-
-        rankViewController.rankItemList[index].rank = rank
     }
 }
 

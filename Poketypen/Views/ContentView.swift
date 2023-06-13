@@ -15,10 +15,10 @@ struct ContentView: View {
                 CustomTabItem(imageName: "Schild.SFSymbol", text: "Verteidigung")
             }.tag(0)
             TypeEffectivenessAttackView().tabItem {
-                CustomTabItem(imageName: "Schwert.SFSymbol", text: "Angriff")
+                CustomTabItem(imageName: "SchwertSolo.SFSymbol", text: "Angriff Solo")
             }.tag(1)
             TypeEffectivenessBenefitsView().tabItem {
-                CustomTabItem(imageName: "Schwert.SFSymbol", text: "Angriff")
+                CustomTabItem(imageName: "Schwert.SFSymbol", text: "Angriff Multi")
             }.tag(2)
             RankView().tabItem {
                 CustomTabItem(imageName: "Rank.SFSymbol", text: "Ranking")

@@ -12,7 +12,6 @@ struct RankItemViewModel: Hashable {
     var mixedPokemon: MixedPoketype
     var rank: Int?
     
-    
     init(uuid: UUID, mixedPokemon: MixedPoketype, rank: Int? = nil) {
         self.uuid = uuid
         self.mixedPokemon = mixedPokemon
